@@ -21,6 +21,7 @@ float r;
  * it also takes s whigh is the sensitivity
  *
  */
+stabilize(1,1);
 float* stabilize(float t, float s){//definetly going to have problems with float* vs float** etc
     
     

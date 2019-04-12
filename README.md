@@ -2,7 +2,7 @@
 arduino drone for com sci
 
 This branch is to test moving void setup to another function
-
+ONLY ADD TO MASTER AFTER TESTING
 
 to do/ideas
 --------

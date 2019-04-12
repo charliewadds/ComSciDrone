@@ -41,5 +41,6 @@ float* stabilize(float MY,float MP,float MR,float t, float s){//definetly going 
         motors[1]+MR*s;
         motors[3]+MR*s;
     }
+    Serial.println(motors[0]);
     return motors;
 }

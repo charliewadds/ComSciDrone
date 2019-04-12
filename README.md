@@ -1,6 +1,8 @@
 # ComSciDrone
 arduino drone for com sci
 
+This branch is to test moving void setup to another function
+
 
 to do/ideas
 --------

@@ -11,7 +11,7 @@
 #include <Arduino.h>
 #endif /* INOsetup_h */
 
-float motors[4]
+float motors[4];
 void INOsetup(){
     // join I2C bus (I2Cdev library doesn't do this automatically)
     

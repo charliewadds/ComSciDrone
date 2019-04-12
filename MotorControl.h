@@ -25,19 +25,19 @@ float r;
 float* stabilize(float MY,float MP,float MR,float t, float s){//definetly going to have problems with float* vs float** etc
     
     
-    if(MP<0-t){
+    if(MP<t){
         motors[2]+MP*s;
         motors[3]+MP*s;
     }
-    if(MP>0+t){
+    if(MP>t{
         motors[0]+MP*s;
         motors[1]+MP*s;
     }
-    if(MR<0-t){
+    if(MR<t){
         motors[0]+MR*s;
         motors[2]+MR*s;
     }
-    if(MR>0+t){
+    if(MR>t){
         motors[1]+MR*s;
         motors[3]+MR*s;
     }

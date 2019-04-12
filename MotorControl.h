@@ -29,7 +29,7 @@ float* stabilize(float MY,float MP,float MR,float t, float s){//definetly going 
         motors[2]+MP*s;
         motors[3]+MP*s;
     }
-    if(MP>t{
+    if(MP>t){
         motors[0]+MP*s;
         motors[1]+MP*s;
     }

@@ -34,6 +34,7 @@ Serial.print(p);
 Serial.print(F("      roll "));
 Serial.print(r);
 Serial.println();*/
+    stabilize(1,1);
     Serial.print(F("      M1 "));
 Serial.print(motors[0]);
     Serial.print(F("      M2 "));

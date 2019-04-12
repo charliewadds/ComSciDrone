@@ -42,7 +42,7 @@ Serial.print(motors[2]);
     Serial.print("      M4 ");
 Serial.print(motors[3]);
 Serial.println();
-    delay(100);
+    delay(100);//only for debugging
 
 
 

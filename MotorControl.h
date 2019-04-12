@@ -22,9 +22,7 @@ float r;
  *
  */
 float* stabilize(float t, float s){//definetly going to have problems with float* vs float** etc
-    y = getY();
-    p = getP();
-    r= getR(); //t is tolorance s is sensitivity
+    
     
     if(p<0-t){
         motors[2]+p*s;

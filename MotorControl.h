@@ -23,7 +23,7 @@ float r;
  */
 
 float* stabilize(float MY,float MP,float MR,float t, int s, float THR){//definetly going to have problems with float* vs float** etc
-    Serial.println(MY);
+    //Serial.println(MY);
     motors[0]= THR;
     motors[1]= THR;
     motors[2]= THR;
@@ -44,6 +44,18 @@ float* stabilize(float MY,float MP,float MR,float t, int s, float THR){//definet
         motors[1]+=MR*s;
         motors[3]+=MR*s;
     }
-    Serial.println(motors[0]);
+    if(motors[0]<0){
+        motors[0]=0;
+    }
+    if(motors[1]<1){
+        motors[1]=1;
+    }
+    if(motors[2]<2){
+        motors[2]=2;
+    }
+    if(motors[3]<3){
+        motors[3]=3;
+    }
+   // Serial.println(motors[0]);
     return motors;
 }

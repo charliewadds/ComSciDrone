@@ -14,6 +14,10 @@ to do/ideas
 - datalogging on an sd card for gps
 - gps route retracing
 - proximity sensor for collision avoidance/smart landing
+- figure out the size for the gears and motors to 3d print(gears) and order(motors mabey)
+- 3d print landing gear switches to turn off props
+- figure out batteries to order/use
+- 
 
 
 

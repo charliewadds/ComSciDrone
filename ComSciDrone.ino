@@ -34,13 +34,13 @@ Serial.print("      roll ");
 Serial.print(r);
 Serial.println();
     Serial.print("      M1 ");
-Serial.print(motor[0]);
+Serial.print(motors[0]);
     Serial.print("      M2 ");
-Serial.print(motor[1]);
+Serial.print(motors[1]);
     Serial.print("      M3 ");
-Serial.print(motor[2]);
+Serial.print(motors[2]);
     Serial.print("      M4 ");
-Serial.print(motor[3]);
+Serial.print(motors[3]);
 Serial.println();
 
 

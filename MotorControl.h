@@ -11,7 +11,7 @@
 //#include "getYPR.h"
 
 #endif /* MotorControl_h */
-float motors[4];
+//float motors[4];
 /*
 float y;
 float p;

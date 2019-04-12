@@ -47,14 +47,14 @@ float* stabilize(float MY,float MP,float MR,float t, int s, float THR){//definet
     if(motors[0]<0){
         motors[0]=0;
     }
-    if(motors[1]<1){
-        motors[1]=1;
+    if(motors[1]<0){
+        motors[1]=0;
     }
-    if(motors[2]<2){
-        motors[2]=2;
+    if(motors[2]<0){
+        motors[2]=0;
     }
-    if(motors[3]<3){
-        motors[3]=3;
+    if(motors[3]<0){
+        motors[3]=0;
     }
    // Serial.println(motors[0]);
     return motors;

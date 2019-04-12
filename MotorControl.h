@@ -22,9 +22,12 @@ float r;
  *
  */
 
-float* stabilize(float MY,float MP,float MR,float t, float s){//definetly going to have problems with float* vs float** etc
+float* stabilize(float MY,float MP,float MR,float t, int s, float THR){//definetly going to have problems with float* vs float** etc
     Serial.println(MY);
-    
+    motors[0]= THR;
+    motors[1]= THR;
+    motors[2]= THR;
+    motors[3]= THR;
     if(MP<t){
         motors[2]+MP*s;
         motors[3]+MP*s;

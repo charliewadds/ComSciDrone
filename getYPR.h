@@ -5,7 +5,6 @@ MPU6050 mpu;
 
 #define OUTPUT_READABLE_YAWPITCHROLL
 
-//hello 
 
 #define LED_PIN 13 // (Arduino is 13, Teensy is 11, Teensy++ is 6)
 
@@ -48,7 +47,7 @@ void dmpDataReady() {
 void updateYPR() {
     // if programming failed, don't try to do anything
     if (!dmpReady) return;
-    
+
     // wait for MPU interrupt or extra packet(s) available
     while (!mpuInterrupt && fifoCount < packetSize) {
         // other program behavior stuff here
@@ -62,32 +61,32 @@ void updateYPR() {
         // .
         // .
     }
-    
+
     // reset interrupt flag and get INT_STATUS byte
     mpuInterrupt = false;
     mpuIntStatus = mpu.getIntStatus();
-    
+
     // get current FIFO count
     fifoCount = mpu.getFIFOCount();
-    
+
     // check for overflow (this should never happen unless our code is too inefficient)
     if ((mpuIntStatus & 0x10) || fifoCount == 1024) {
         // reset so we can continue cleanly
         mpu.resetFIFO();
         Serial.println(F("FIFO overflow!"));
-        
+
         // otherwise, check for DMP data ready interrupt (this should happen frequently)
     } else if (mpuIntStatus & 0x02) {
         // wait for correct available data length, should be a VERY short wait
         while (fifoCount < packetSize) fifoCount = mpu.getFIFOCount();
-        
+
         // read a packet from FIFO
         mpu.getFIFOBytes(fifoBuffer, packetSize);
-        
+
         // track FIFO count here in case there is > 1 packet available
         // (this lets us immediately read more without waiting for an interrupt)
         fifoCount -= packetSize;
-        
+
 #ifdef OUTPUT_READABLE_QUATERNION
         // display quaternion values in easy matrix form: w x y z
         mpu.dmpGetQuaternion(&q, fifoBuffer);
@@ -100,7 +99,7 @@ void updateYPR() {
         Serial.print("\t");
         Serial.println(q.z);
 #endif
-        
+
 #ifdef OUTPUT_READABLE_EULER
         // display Euler angles in degrees
         mpu.dmpGetQuaternion(&q, fifoBuffer);
@@ -112,13 +111,13 @@ void updateYPR() {
         Serial.print("\t");
         Serial.println(euler[2] * 180/M_PI);
 #endif
-        
+
 #ifdef OUTPUT_READABLE_YAWPITCHROLL
         // display Euler angles in degrees
         mpu.dmpGetQuaternion(&q, fifoBuffer);
         mpu.dmpGetGravity(&gravity, &q);
         mpu.dmpGetYawPitchRoll(ypr, &q, &gravity);
-        
+
         y= ypr[0] * 180/M_PI;
         p=ypr[1] * 180/M_PI;
         r=ypr[2] * 180/M_PI;
@@ -130,7 +129,7 @@ void updateYPR() {
         Serial.print("\t");
         Serial.println(r);*/
 #endif
-        
+
 #ifdef OUTPUT_READABLE_REALACCEL
         // display real acceleration, adjusted to remove gravity
         mpu.dmpGetQuaternion(&q, fifoBuffer);
@@ -144,7 +143,7 @@ void updateYPR() {
         Serial.print("\t");
         Serial.println(aaReal.z);
 #endif
-        
+
 #ifdef OUTPUT_READABLE_WORLDACCEL
         // display initial world-frame acceleration, adjusted to remove gravity
         // and rotated based on known orientation from quaternion
@@ -160,7 +159,7 @@ void updateYPR() {
         Serial.print("\t");
         Serial.println(aaWorld.z);
 #endif
-        
+
 #ifdef OUTPUT_TEAPOT
         // display quaternion values in InvenSense Teapot demo format:
         teapotPacket[2] = fifoBuffer[0];
@@ -174,10 +173,10 @@ void updateYPR() {
         Serial.write(teapotPacket, 14);
         teapotPacket[11]++; // packetCount, loops at 0xFF on purpose
 #endif
-        
+
         // blink LED to indicate activity
         blinkState = !blinkState;
         digitalWrite(LED_PIN, blinkState);
     }
-   //mpu.resetFIFO(); 
+   //mpu.resetFIFO();
 }

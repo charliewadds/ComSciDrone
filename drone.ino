@@ -5,7 +5,7 @@
 
 #include "Wire.h"
 
-
+ asdf
 
 
 
@@ -15,16 +15,16 @@
 
 void setup() {
     // join I2C bus (I2Cdev library doesn't do this automatically)
-    
+
         Wire.begin();
         TWBR = 24; // 400kHz I2C clock (200kHz if CPU is 8MHz)
-    
 
-    
+
+
     Serial.begin(115200);//make this 115200 to use teapot (no clue what teapot is)
     //some weird serial thing can go here for arduino leonardo done even know what that is
 
-    
+
     Serial.println(F("starting"));//use F to reduce the sram usage
     mpu.initialize();
 
@@ -32,8 +32,8 @@ void setup() {
     Serial.println(F("Testing device connections..."));
     Serial.println(mpu.testConnection() ? F("MPU6050 connection successful") : F("MPU6050 connection failed"));
 
-    // wait for ready 
-    //this is super dumb 
+    // wait for ready
+    //this is super dumb
     /*
     Serial.println(F("\nSend any character to begin DMP programming and demo: "));
     while (Serial.available() && Serial.read()); // empty buffer
@@ -101,5 +101,5 @@ Serial.println();
 
 
 
-    
+
 }

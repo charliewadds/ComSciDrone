@@ -29,20 +29,20 @@ float* stabilize(float MY,float MP,float MR,float t, int s, float THR){//definet
     motors[2]= THR;
     motors[3]= THR;
     if(MP<t){
-        motors[2]+MP*s;
-        motors[3]+MP*s;
+        motors[2]+=MP*s;
+        motors[3]+=MP*s;
     }
     if(MP>t){
-        motors[0]+MP*s;
-        motors[1]+MP*s;
+        motors[0]+=MP*s;
+        motors[1]+=MP*s;
     }
     if(MR<t){
-        motors[0]+MR*s;
-        motors[2]+MR*s;
+        motors[0]+=MR*s;
+        motors[2]+=MR*s;
     }
     if(MR>t){
-        motors[1]+MR*s;
-        motors[3]+MR*s;
+        motors[1]+=MR*s;
+        motors[3]+=MR*s;
     }
     Serial.println(motors[0]);
     return motors;

@@ -2,7 +2,7 @@
 #include "MPU6050_6Axis_MotionApps20.h"
 #include "I2Cdev.h"
 MPU6050 mpu;
-//hello
+
 #define OUTPUT_READABLE_YAWPITCHROLL
 
 

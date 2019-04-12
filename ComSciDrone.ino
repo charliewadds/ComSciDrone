@@ -26,13 +26,14 @@ void setup() {
 
 void loop() {
     updateYPR(); //F() is supposed to save sram
+    /*
 Serial.print(F("yaw "));
 Serial.print(y);
 Serial.print(F("      pitch "));
 Serial.print(p);
 Serial.print(F("      roll "));
 Serial.print(r);
-Serial.println();
+Serial.println();*/
     Serial.print(F("      M1 "));
 Serial.print(motors[0]);
     Serial.print(F("      M2 "));

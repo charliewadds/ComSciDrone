@@ -7,6 +7,34 @@
 
 #ifndef MotorControl_h
 #define MotorControl_h
-
+#include <Arduino.h>
+#include "getYPR.h"
 
 #endif /* MotorControl_h */
+float motors[4];
+/*
+ *this method takes t which is the tolorance to change the motors at
+ * it also takes s whigh is the sensitivity
+ *
+ */
+float* stabilize(){//definetly going to have problems with float* vs float** etc
+    
+    
+    if(p<0-t){
+        motors[2]+p*s;
+        motors[3]+p*s;
+    }
+    if(p>0+t){
+        motors[0]+p*s;
+        motors[1]+p*s;
+    }
+    if(r<0-t){
+        motors[0]+r*s;
+        motors[2]+r*s;
+    }
+    if(r>0+t){
+        motors[1]+r*s;
+        motors[3]+r*s;
+    }
+    return motors;
+}

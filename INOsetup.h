@@ -10,7 +10,10 @@
 
 #include <Arduino.h>
 #endif /* INOsetup_h */
-
+const int M1PIN = 3;
+const int M2PIN = 5;
+const int M3PIN = 6;
+const int M4PIN = 9;
 float motors[4];
 void INOsetup(){
     // join I2C bus (I2Cdev library doesn't do this automatically)
@@ -78,5 +81,6 @@ void INOsetup(){
     }
     
     // configure LED for output
+    pinMode
     pinMode(LED_PIN, OUTPUT);
 }

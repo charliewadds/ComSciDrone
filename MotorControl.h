@@ -59,3 +59,12 @@ float* stabilize(float MY,float MP,float MR,float t, int s, float THR){//definet
    // Serial.println(motors[0]);
     return motors;
 }
+
+void PWMout(){
+    digitalWrite(M1PIN,motors[0]);
+    digitalWrite(M2PIN,motors[1]);
+    digitalWrite(M3PIN,motors[2]);
+    digitalWrite(M4PIN,motors[3]);
+    
+    
+}

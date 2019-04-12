@@ -6,6 +6,7 @@ This branch is to test moving void setup to another function
 
 to do/ideas
 --------
+- MAKE A FUNCTION TO STOP THE DRONE FROM SPINNING
 - make my own ish version of the getYPR.h file
 - make my own ish version of the void setup() in the main file
 - is it possible to setup the getYPR.h in another header file or another function in the getYPR.h file?

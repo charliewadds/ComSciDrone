@@ -1,18 +1,21 @@
 
 
 #include "getYPR.h"
-
-
+#include "I2Cdev.h"
+#include "MPU6050_6Axis_MotionApps20.h"
 #include "Wire.h"
 
 
-
-
+#include "MotorControl.h"
+//float y;
+//float p;
+//float r;
+//float t;
 
 // ================================================================
 // ===                      INITIAL SETUP                       ===
 // ================================================================
-
+//char DevStatus;
 void setup() {
     // join I2C bus (I2Cdev library doesn't do this automatically)
     
@@ -42,7 +45,7 @@ void setup() {
 */
     // load and configure the DMP (I think DMP is digital motion processor)
     Serial.println(F("starting accel"));
-    devStatus = mpu.dmpInitialize();
+    DevStat = mpu.dmpInitialize();
 
     // supply your own gyro offsets here, scaled for min sensitivity
     mpu.setXGyroOffset(220);
@@ -52,19 +55,19 @@ void setup() {
     //not totally sure what these do but without them the output is all over the place
 
     // make sure it worked (returns 0 if so)
-    if (devStatus == 0) {
+    if (DevStat == 0) {
         // turn on the DMP, now that it's ready
         Serial.println(F("Enabling DMP..."));
         mpu.setDMPEnabled(true);
 
         // enable Arduino interrupt detection
         Serial.println(F("Enabling interrupt detection (Arduino external interrupt 0)..."));
-        attachInterrupt(0, dmpDataReady, RISING);
-        mpuIntStatus = mpu.getIntStatus();
+        attachInterrupt(0, GotData, RISING);
+        AccelIntStat = mpu.getIntStatus();
 
         // set our DMP Ready flag so the main loop() function knows it's okay to use it
         Serial.println(F("DMP ready! Waiting for first interrupt..."));
-        dmpReady = true;
+        AccelRdy = true;
 
         // get expected DMP packet size for later comparison
         packetSize = mpu.dmpGetFIFOPacketSize();
@@ -74,7 +77,7 @@ void setup() {
         // 2 = DMP configuration updates failed
         // (if it's going to break, usually the code will be 1)
         Serial.print(F("DMP Initialization failed (code "));
-        Serial.print(devStatus);
+        Serial.print(DevStat);
         Serial.println(F(")"));
     }
 
@@ -89,6 +92,10 @@ void setup() {
 // ================================================================
 
 void loop() {
+    /*y= getY();
+    p=getP();
+    r=getR();*/
+    stabilize(10,10);
     updateYPR();
 Serial.print("yaw ");
 Serial.print(y);

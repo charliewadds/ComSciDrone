@@ -1,12 +1,13 @@
 #include <Arduino.h>
 #include "MPU6050_6Axis_MotionApps20.h"
 #include "I2Cdev.h"
+//i think i need some ifndef thing here
 MPU6050 mpu;
 
 //#define OUTPUT_READABLE_YAWPITCHROLL
 
 
-bool ypr == true;//this is probably wrong
+bool ypr1 = true;//this is probably wrong
 
 
 #define LED_PIN 13 // (Arduino is 13, Teensy is 11, Teensy++ is 6)
@@ -15,6 +16,7 @@ bool ypr == true;//this is probably wrong
 float y;
 float p;
 float r;
+
 bool blinkState = false;
 
 // MPU control/status vars
@@ -43,7 +45,7 @@ float ypr[3];           // [yaw, pitch, roll]   yaw/pitch/roll container and gra
 // ================================================================
 
 volatile bool mpuInterrupt = false;     // indicates whether MPU interrupt pin has gone high this has to be a volatile bool because the arduino uses multi-threading for the interrupt pins
-void GotData?() {//might need to take out the question mark
+void GotData() {//might need to take out the question mark
     mpuInterrupt = true;
 }
 void updateYPR() {
@@ -94,7 +96,7 @@ void updateYPR() {
 
         
 //#ifdef OUTPUT_READABLE_YAWPITCHROLL Again probably wrong
-        if(ypr){
+        if(ypr1){
         // display Euler angles in degrees
         mpu.dmpGetQuaternion(&q, fifoBuffer);
         mpu.dmpGetGravity(&gravity, &q);
@@ -129,4 +131,17 @@ void updateYPR() {
 
         
    //mpu.resetFIFO(); 
+}
+}
+int getY(){
+updateYPR();
+return y;
+ }
+int getP(){
+  updateYPR();
+  return p;
+}
+int getR(){
+  updateYPR();
+    return p;
 }

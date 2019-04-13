@@ -83,4 +83,8 @@ void INOsetup(){
     // configure LED for output
     pinMode
     pinMode(LED_PIN, OUTPUT);
+    pinMode(M1PIN, OUTPUT);
+    pinMode(M2PIN,OUTPUT);
+    pinMode(M3PIN,OUTPUT);
+    pinMode(M4PIN,OUTPUT);
 }

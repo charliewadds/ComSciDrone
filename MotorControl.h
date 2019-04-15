@@ -61,10 +61,10 @@ float* stabilize(float MY,float MP,float MR,float t, int s, float THR){//definet
 }
 
 void PWMout(){
-    digitalWrite(M1PIN,motors[0]);
-    digitalWrite(M2PIN,motors[1]);
-    digitalWrite(M3PIN,motors[2]);
-    digitalWrite(M4PIN,motors[3]);
+    analogWrite(M1PIN,motors[0]);
+    analogWrite(M2PIN,motors[1]);
+    analogWrite(M3PIN,motors[2]);
+    analogWrite(M4PIN,motors[3]);
     
     
 }

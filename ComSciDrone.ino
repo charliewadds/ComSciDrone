@@ -35,15 +35,15 @@ Serial.print(F("      roll "));
 Serial.print(r);
 Serial.println();*/
     stabilize(y,p,r,1,1,10);
-    Serial.print(F("      M1 "));
+    Serial.print(F("      M0 "));
 Serial.print(motors[0]);
-    Serial.print(F("      M2 "));
+    Serial.print(F("      M1 "));
 Serial.print(motors[1]);
-    Serial.print(F("      M3 "));
+    Serial.print(F("      M2 "));
 Serial.print(motors[2]);
-    Serial.print(F("      M4 "));
+    Serial.print(F("      M3 "));
 Serial.print(motors[3]);
-    PWMout();
+    //PWMout();
 Serial.println();
     //delay(100);//only for debugging
 

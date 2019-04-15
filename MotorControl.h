@@ -28,6 +28,9 @@ float* stabilize(float MY,float MP,float MR,float t, int s, float THR){//definet
     motors[1]= THR;
     motors[2]= THR;
     motors[3]= THR;
+    MY = abs(MY);
+    MP= abs(MP);
+    MR= abs(MR);
     if(MP<t){
         motors[2]+=MP*s;
         motors[3]+=MP*s;

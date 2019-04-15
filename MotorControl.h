@@ -36,11 +36,11 @@ float* stabilize(float MY,float MP,float MR,float t, int s, float THR){//definet
         motors[0]+=MP*s;
         motors[1]+=MP*s;
     }
-    if(MR<t){
+    if(MR>t){
         motors[0]+=MR*s;
         motors[2]+=MR*s;
     }
-    if(MR>t){
+    if(MR<t){
         motors[1]+=MR*s;
         motors[3]+=MR*s;
     }

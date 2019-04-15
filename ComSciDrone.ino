@@ -43,6 +43,7 @@ Serial.print(motors[1]);
 Serial.print(motors[2]);
     Serial.print(F("      M4 "));
 Serial.print(motors[3]);
+    PWMout();
 Serial.println();
     //delay(100);//only for debugging
 

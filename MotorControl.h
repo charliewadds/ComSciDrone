@@ -34,26 +34,26 @@ float* stabilize(float MY,float MP,float MR,float t, int s, float THR){//definet
     if(MP<t){
         motors[2]+=abs(MP*s);
         motors[3]+=abs(MP*s);
-        //motors[0]-=MP*s;
-        //motors[1]-=MP*s;
+        motors[0]-=abs(MP*s);
+        motors[1]-=abs(MP*s);
     }
-    if(MP>t){
+    if(MP>t){  //dont need abs() because it is already positive
         motors[0]+=MP*s;
         motors[1]+=MP*s;
-       // motors[2]-=MP*s;
-       // motors[3]-=MP*s;
+        motors[2]-=MP*s;
+        motors[3]-=MP*s;
     }
     if(MR>t){
         motors[0]+=MR*s;
         motors[2]+=MR*s;
-       //motors[1]-=MP*s;
-       // motors[3]-=MP*s;
+       motors[1]-=MP*s;
+        motors[3]-=MP*s;
     }
     if(MR<t){
         motors[1]+=abs(MR*s);
         motors[3]+=abs(MR*s);
-        //motors[0]-=MP*s;
-       //motors[2]-=MP*s;
+        motors[0]-=abs(MP*s);
+        motors[2]-=abs(MP*s);
     }
     if(motors[0]<0){
         motors[0]=0;

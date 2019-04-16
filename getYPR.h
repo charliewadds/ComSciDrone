@@ -9,7 +9,7 @@ MPU6050 mpu;
 bool ypr1 = true;//this is probably wrong
 
 
-#define LED_PIN 13 // (Arduino is 13, Teensy is 11, Teensy++ is 6)
+//#define LED_PIN 13 // (Arduino is 13, Teensy is 11, Teensy++ is 6)
 
 
 float y;

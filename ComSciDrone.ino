@@ -34,7 +34,7 @@ Serial.print(p);
 Serial.print(F("      roll "));
 Serial.print(r);
 Serial.println();*/
-    stabilize(y,p,r,1,1,10);
+    stabilize(y,p,r,1,3,10);
     Serial.print(F("      M0 "));
 Serial.print(motors[0]);
     Serial.print(F("      M1 "));
@@ -43,7 +43,7 @@ Serial.print(motors[1]);
 Serial.print(motors[2]);
     Serial.print(F("      M3 "));
 Serial.print(motors[3]);
-    //PWMout();
+    PWMout();
 Serial.println();
     //delay(100);//only for debugging
 

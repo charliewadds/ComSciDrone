@@ -42,30 +42,37 @@ char Buffer(){//store all the chars in an array
         if(mySwitch.available()){
             while(letCurr!='$'){//while a packet is being read
                 
-                letCurr = getLetter();
+                letCurr = getLetter();//this is only called before or after a / is read
                 
                 if(letCurr=='/'){
                     dec = false;
+                    
                     while(letCurr!=/){
                     
                         letCurr = getLetter();
                         letCurrAsInt//MAKE THIS WORK
+                        if(letCurr!='.'){
                         if(dec== false){//before the decimal place
                             //convert char to int
                             yJoy+=letCurr;
                             
                         }
                         else{//for after the decimal place
-                            
+                            //convert char to int again
                             yJoy+=letCurr/(10*decInt);//10 for 0.1 100 for 0.01 etc
                             decInt++;
                             }
+                    }else if(letCurr=='.'){//this is called if there is a decimal read in the input
+                        dec = true;
+                        decInt++;
                     }
-                    decInt=0;
+                    }
+                    
+                    decInt=0;//set the int displaying the decimal place to
                     dec=false;
                     yprt++;
                 }
-                timesAround++;
+                timesAround++;//this only is called after a /
                 }
             yprt=0;
             decInt= 0;

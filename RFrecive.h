@@ -1,26 +1,79 @@
 //
 //  Header.h
 //
-//  the format of the input is $/y.yy/p.pp/r.rr/t.tt/$ y.yy is yaw p.pp is pitch r.rr is roll
+//  the format of the input is $/yy.yy/pp.pp/rr.rr/tt.tt/$ y.yy is yaw p.pp is pitch r.rr is roll tt.tt is throttle
 //  need some way of adding a sign on the Y P and R
 //  Created by Charlie Wadds on 2019-04-15.
 //  23 charactes for each string
 
 #ifndef Header_h
 #define Header_h
-
+#include <RCSwitch.h>
 #include <Arduino.h>
 #endif /* Header_h */
+RCSwitch mySwitch = RCSwitch();//this should go in the setup file
 
-char getLetter(){//turn whatever comes out of
-    
-    
-}
 
-int BufSizeMax = 24;//add one to be safe
+int BufSizeMax = 27;//add one to be safe
 char Buf[BufSizeMax];
+char getLetter(){ //need to turn it from whatever the input is to char
+    if(mySwitch.available()){
+    char let = mySwitch.geRecivedValue();
+        return let;
+        else{
+            return '$$';
+        }
+    }
+}
 char Buffer(){//store all the chars in an array
-   if(
+    float yJoy = 0;
+    float pJoy = 0;
+    float rJoy = 0;
+    float tJoy = 0;
+    int yprt = 0;//0 for yaw 1 for pitch etc
+    bool dec = false; // if it is before or after the decimal
+    int decInt = 0; //0 for 10s and ones 1 for 0.1 2 for 0.01 etc
+    char letCurr = getLetter();
+    char BufOut[17];
+    int timesAround = 0;
+     if (mySwitch.available()) {
+    if(letCurr=='$'){
+        letCurr = getLetter();
+        if(mySwitch.available()){
+            while(letCurr!='$'){//while a packet is being read
+                
+                letCurr = getLetter();
+                
+                if(letCurr=='/'){
+                    dec = false;
+                    while(letCurr!=/){
+                    
+                        letCurr = getLetter();
+                        letCurrAsInt//MAKE THIS WORK
+                        if(dec== false){//before the decimal place
+                            //convert char to int
+                            yJoy+=letCurr;
+                            
+                        }
+                        else{//for after the decimal place
+                            
+                            yJoy+=letCurr/(10*decInt);//10 for 0.1 100 for 0.01 etc
+                            decInt++;
+                            }
+                    }
+                    decInt=0;
+                    dec=false;
+                    yprt++;
+                }
+                timesAround++;
+                }
+            yprt=0;
+            decInt= 0;
+            dec= false;
+        
+              }
+        
+    }
     
     
 }
@@ -29,7 +82,7 @@ void GetJoy(){
     float Pjoy;
     float Rjoy;
     float Tjoy;
-    if(L == "$"){
+    if(L == '$'){
         
     }
     

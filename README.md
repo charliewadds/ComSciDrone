@@ -6,7 +6,8 @@ ONLY ADD TO MASTER AFTER TESTING
 
 to do/ideas
 --------
-- MAKE A FUNCTION TO STOP THE DRONE FROM SPINNING
+- MAKE A FILE OT GET RID OF ALL THE HARD-CODING (json?, .config?)
+- fix the yaw correction loop so it has some way of finding the optimal balance of power to the motors
 - make my own ish version of the getYPR.h file
 - make my own ish version of the void setup() in the main file
 - make a header file for rf or wifi communication

@@ -14,6 +14,9 @@ const int M1PIN = 3;
 const int M2PIN = 5;
 const int M3PIN = 6;
 const int M4PIN = 9;
+int Ycurr;
+int Ycounter;
+int YnumTimes= 5;
 float motors[4];
 void INOsetup(){
     // join I2C bus (I2Cdev library doesn't do this automatically)

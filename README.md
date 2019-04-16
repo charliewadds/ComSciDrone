@@ -6,6 +6,7 @@ ONLY ADD TO MASTER AFTER TESTING
 
 to do/ideas
 --------
+- figure out a way to have a sign on the RF recive yaw pitch and roll
 - MAKE A FILE OT GET RID OF ALL THE HARD-CODING (json?, .config?)
 - fix the yaw correction loop so it has some way of finding the optimal balance of power to the motors
 - make my own ish version of the getYPR.h file

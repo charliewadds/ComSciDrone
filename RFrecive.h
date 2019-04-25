@@ -51,7 +51,7 @@ char Buffer(){//store all the chars in an array
                     
                         letCurr = getLetter();
                         letCurrAsInt//MAKE THIS WORK
-                        if(letCurr!='.'){
+                        if(letCurr!='.'){c}
                         if(dec== false){//before the decimal place
                             //convert char to int
                             yJoy+=letCurr;

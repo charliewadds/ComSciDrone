@@ -9,6 +9,9 @@
 #define INOsetup_h
 
 #include <Arduino.h>
+#include <Wire.h>
+#include <SPI.h>
+#include <SparkFunLSM9DS1.h>
 #endif /* INOsetup_h */
 const int M1PIN = 3;
 const int M2PIN = 5;
@@ -20,7 +23,22 @@ int YnumTimes= 5;
 float motors[4];
 void INOsetup(){
     // join I2C bus (I2Cdev library doesn't do this automatically)
+    imu.settings.device.commInterface = IMU_MODE_I2C;
+    imu.settings.device.mAddress = LSM9DS1_M;
+    imu.settings.device.agAddress = LSM9DS1_AG;
     
+    if (!imu.begin())
+    {
+        Serial.println("Failed to communicate with LSM9DS1.");
+        Serial.println("Double-check wiring.");
+        Serial.println("Default settings in this sketch will " \
+                       "work for an out of the box LSM9DS1 " \
+                       "Breakout, but may need to be modified " \
+                       "if the board jumpers are.");
+        while (1)
+            ;
+    }
+    /*
     Wire.begin();
     TWBR = 24; // 400kHz I2C clock (200kHz if CPU is 8MHz)
     
@@ -44,8 +62,8 @@ void INOsetup(){
      while (Serial.available() && Serial.read()); // empty buffer
      while (!Serial.available());                 // wait for data
      while (Serial.available() && Serial.read()); // empty buffer again
-     */
-    // load and configure the DMP (I think DMP is digital motion processor)
+     
+    //load and configure the DMP (I think DMP is digital motion processor)
     Serial.println(F("starting accel"));
     DevStat = mpu.dmpInitialize();
     
@@ -82,7 +100,7 @@ void INOsetup(){
         Serial.print(DevStat);
         Serial.println(F(")"));
     }
-    
+    */
     // configure LED for output
     //pinMode
     //pinMode(LED_PIN, OUTPUT);

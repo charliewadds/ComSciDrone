@@ -20,7 +20,7 @@ to do/ideas
 - proximity sensor for collision avoidance/smart landing
 - 3d print landing gear switches to turn off props
 - figure out batteries to order/use
-- why is M4 always zero?
+
 
 
 setup
@@ -37,3 +37,24 @@ M1---------------------D3
 M2---------------------D5
 M3---------------------D6
 M4---------------------D9
+
+
+
+Arduino1 - controller
+
+- 433 mHz transmitter (to send joystick data)
+- 315 mHz receiver (to receive data from the drone to send to GUI)
+- 2 joysticks
+- connect to processing for GUI
+
+
+
+Arduino2 - flight controller
+
+
+- accelerometer
+- 433 mHz receiver (to receive joystick data)
+- 315 mHz transmitter (to send GUI data)
+- transistors
+  - MOTORS
+- button on landing gear to turn off propellers
